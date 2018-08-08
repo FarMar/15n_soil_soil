@@ -1,0 +1,12 @@
+Practical exercise (due 3pm 10-08-2018):
+Work through your selected data set, or one of the data sets in Visualisation.
+
+1) Set up a git repository for your analysis. Be sure to commit regularly and push daily.
+
+2) Tracking your work with git, make your data tidy.
+
+3) Explore the data through visualisation (min 5 plots), and develop a final image that tells the data's story.
+
+4) Make a KnitR report with your code and plots.
+
+5) Present to your classmates.
