@@ -11,6 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Impact of biostimulants on soil nitrogen dynamics
 
+## Overview
+
+These data are from a pot experiment that was conducted to investigate whether biostimulants impact on soil nitrogen (N) cycling and wheat uptake of legume-derived N. Here, we are looking at soluble N and carbon (C) pools over the growth period. These are presented in mg L^-1^ as they are derived from soil solution samples that were collected non-destructively using [Rhizon samplers](https://www.rhizosphere.com/)
+![](https://www.rhizosphere.com/assets/images/RhizonCSSinacoreRRP.jpg)
+
+
 ```{r cars}
 summary(cars)
 ```
