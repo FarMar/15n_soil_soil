@@ -11,4 +11,19 @@ raw_data
 
 ## First we need to create a don variable by subtracting "no3" and "nh4" from "tdn"
 
+# make a 'din' variable
 
+with_din <- mutate(raw_data, nh4 + no3)
+with_din
+
+# rename using base R "names function. Note the "[11]" is the column number. 
+# But... use this with care as if columns are mis-ordered it can result in wrong data
+
+names(with_din)[11] <- "din"
+with_din
+
+#now let's subtract din from tdn to make don
+
+with_don <- mutate(with_din, tdn - din)
+names(with_don)[12] <- "don"
+with_don
