@@ -1,0 +1,44 @@
+---
+title: "Data School Activity 1 - Small Data"
+author: "Mark Farrell"
+date: "08/08/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Impact of biostimulants on soil nitrogen dynamics
+
+## Overview
+
+These data are from a pot experiment that was conducted to investigate whether biostimulants impact on soil nitrogen (N) cycling and wheat uptake of legume-derived N. Here, we are looking at soluble N and carbon (C) pools over the growth period. These are presented in mg L^-1^ as they are derived from soil solution samples that were collected non-destructively using [Rhizon samplers](https://www.rhizosphere.com/).
+![](https://www.rhizosphere.com/assets/images/RhizonCSSinacoreRRP.jpg)
+
+## Initial data processing, tidying, etc
+
+First, we need to lead tidyverse, and bring the data into the R environment
+```{r load_libraries, message=FALSE}
+library(tidyverse)
+raw_data <- read_csv("results/raw/15n_soil_sol.csv")
+
+```
+
+We can now see that the data has been successfully loaded into the environment:
+
+```{r raw}
+raw
+```
+
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
