@@ -22,10 +22,20 @@ with_din
 names(with_din)[11] <- "din"
 with_din
 
-#now let's subtract din from tdn to make don
+# now let's subtract din from tdn to make don
+# here we're first making a straight subtraction of din from tdn, but this always brings negatives
+# the case_when function makes a second new column don_nz that returns a 0 when the value is < 1
 
-with_don <- mutate(with_din, tdn - din)
-names(with_don)[12] <- "don"
-with_don
+don_fixed <- with_din %>% 
+  mutate(don = tdn - din,
+         don_nz = case_when(
+           don >= 0 ~ don,
+           TRUE ~ 0
+         ))
+
 
 ##do we have any negatives?
+count(don_fixed, don_nz < 0)
+
+
+
