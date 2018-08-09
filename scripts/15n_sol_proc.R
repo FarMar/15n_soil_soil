@@ -27,3 +27,5 @@ with_din
 with_don <- mutate(with_din, tdn - din)
 names(with_don)[12] <- "don"
 with_don
+
+##do we have any negatives?
