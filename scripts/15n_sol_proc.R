@@ -51,3 +51,8 @@ ratios
 
 is.na(ratios) <- do.call(cbind,lapply(ratios, is.infinite))
 ratios
+
+##so, with clean data, all that's left to do is write the final .csv, then knitR
+write_csv(ratios, "results/processed/ratios.csv") # DON'T FORGET THE QUOTATIONS ON THE PATH!!!!
+
+
