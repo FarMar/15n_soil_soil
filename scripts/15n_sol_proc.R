@@ -26,7 +26,7 @@ with_din
 # here we're first making a straight subtraction of din from tdn, but this always brings negatives
 # the case_when function makes a second new column don_nz that returns a 0 when the value is < 1
 
-don_fixed <- with_din %>% 
+with_don <- with_din %>% 
   mutate(don = tdn - din,
          don_nz = case_when(
            don >= 0 ~ don,
@@ -35,7 +35,19 @@ don_fixed <- with_din %>%
 
 
 ##do we have any negatives?
-count(don_fixed, don_nz < 0)
+count(with_don, don_nz < 0)
 
+##tidying...
+don_fixed <- select(with_don, -don)
+names(don_fixed)[12] <- "don"
 
+##make some ratios
+ratios <- mutate(don_fixed, doc_don = doc / don )
+ratios <- mutate(ratios, don_din = don / din )
+ratios
 
+##Now we have some Inf. these need to become NA
+# solution from https://stackoverflow.com/questions/12188509/cleaning-inf-values-from-an-r-dataframe
+
+is.na(ratios) <- do.call(cbind,lapply(ratios, is.infinite))
+ratios
