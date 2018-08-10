@@ -12,10 +12,12 @@ all
 
 ## also here: https://rstudio-pubs-static.s3.amazonaws.com/136237_170402e5f0b54561bf7605bdea98267a.html
 
+## Below is a rather extensive set of code for xy plots with/without trends and CI ribbons
 
+## Nitrate
 
-ggplot(data = all, aes(days, no3, colour = trt)) +
-  scale_colour_manual(values=c("#CCFF00",
+ggplot(data = all, aes(days, no3, colour = trt)) + # x, y, colour by treatment
+  scale_colour_manual(values=c("#CCFF00", # all the colours in hexadecimal code in order of "colour = x" argument above
                                "#99FF00",
                                "#66FF00",
                                "#00CC00",
@@ -28,31 +30,30 @@ ggplot(data = all, aes(days, no3, colour = trt)) +
                                "#333333",
                                "#0099FF"
   )) +
-  #geom_point(size = 6, alpha = 0.6) +
-  geom_jitter(size = 6, alpha = 0.6, width = 1) +
-  stat_smooth(method = "loess", se = FALSE, size = 1) + 
-  stat_smooth(method = "loess", 
+  #geom_point(size = 6, alpha = 0.6) + # Plot as a point graph, size, transparency
+  geom_jitter(size = 4, alpha = 0.7, width = 0.5) + # Plot as a jittered point graph
+  stat_smooth(method = "loess", se = FALSE, size = 1) + # Adds trend line only
+  stat_smooth(method = "loess", # Adds ribbon for SE / CI and allows transparency to be adjusted
   #              colour = "red", 
                 geom = "ribbon", 
-                alpha = 0.1,
-                size = 0.01,
-  #              fill = , 
-                fullrange = FALSE) + 
- # xlim(0, 48) + ylim(0, 300) +
-  coord_cartesian(xlim = c(0, 48), ylim = c(0, 450)) +
+                alpha = 0.05, #sets ribbon transparency
+                size = 0.0001, #sets ribbon outline thickness. Need to work out how to make transparent
+                fullrange = TRUE) + # Forces ribbon to end of data
+ # xlim(0, 48) + ylim(0, 300) + # can be used to set hard limits to scale
+  coord_cartesian(xlim = c(0, 48), ylim = c(0, 450)) + #sets soft limits to scale
   labs(
-    x = "Time (days)",
-    y = ~NO[3]^{textstyle("-")}-N ~mg~L^{-1},
-    #  title = "Nitrogen",
-    colour = "Treatment"
+    x = "Time (days)", # x axis label
+    y = ~NO[3]^{textstyle("-")}-N ~mg~L^{-1}, #y axis label, note cpde and weblink above for special characters and script
+    #  title = "Nitrogen", # Graph title
+    colour = "Treatment" # Legend Title
   ) +
   theme(
-    panel.grid = element_blank(),
-    # axis.text.y = element_text(angle = 90), rotates labels
-    axis.text=element_text(size=14),
-    axis.title = element_text(color="black", face="bold", size=18),
-    panel.background = element_rect(fill = "white",
-                                    colour = "black")
+    panel.grid = element_blank(), # blank grid
+    # axis.text.y = element_text(angle = 90), # rotates labels
+    axis.text=element_text(size=14), # axis text size
+    axis.title = element_text(color="black", face="bold", size=18), # axis label text size
+    panel.background = element_rect(fill = "white", # panel background
+                                    colour = "black") # panel outline
   )
 
 
