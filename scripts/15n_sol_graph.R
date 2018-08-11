@@ -618,7 +618,7 @@ ggplot(data = all, aes(days, tdn, colour = trt, size = don)) + # x, y, colour by
     panel.grid = element_blank(), # blank grid
     # axis.text.y = element_text(angle = 90), # rotates labels
     axis.text=element_text(size=14), # axis text size
-    axis.title = element_text(color="black", face="bold", size=18), # axis label text size
+    axis.title = element_text(color="black", size=18), # axis label text size
     panel.background = element_rect(fill = "white", # panel background
                                     colour = "black") # panel outline
   )
@@ -661,7 +661,7 @@ ggplot(data = all, aes(days, tdn, colour = trt, size = don_din)) + # x, y, colou
     panel.grid = element_blank(), # blank grid
     # axis.text.y = element_text(angle = 90), # rotates labels
     axis.text=element_text(size=14), # axis text size
-    axis.title = element_text(color="black", face="bold", size=18), # axis label text size
+    axis.title = element_text(color="black", size=18), # axis label text size
     panel.background = element_rect(fill = "white", # panel background
                                     colour = "black") # panel outline
   )
